@@ -1,21 +1,27 @@
 apply plugin: 'com.android.application'
 buildscript {
     repositories {
-        //jcenter()
-        maven { url "http://127.0.0.1:8081/nexus/content/groups/public/" }
+        jcenter()
+        google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:3.4.2'
+    }
+}
+allprojects {
+    repositories{
+        google()
+        mavenCentral()
     }
 }
 android {
-    compileSdkVersion 16
-    buildToolsVersion '23.0.3'
+    compileSdkVersion 26
+    buildToolsVersion '28.0.3'
     def abiVersionOffsets = ['arm64-v8': 1, 'armeabi': 2, 'armeabi-v7a': 3, 'mips': 4, 'mips64': 5, 'x86': 6, 'x86_64': 7]
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 16
-        ndk.abiFilters 'armeabi-v7a'
+        targetSdkVersion 26
         externalNativeBuild.ndkBuild.arguments '-j4'
         versionName '1.0'
         versionCode 1
@@ -82,4 +88,5 @@ android {
 }
 
 dependencies {
+
 }
